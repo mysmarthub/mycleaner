@@ -12,9 +12,10 @@ from os.path import join, dirname
 PACKAGE = "mycleaner"
 VERSION = __import__(PACKAGE).__version__
 AUTHOR = __import__(PACKAGE).__author__
-AUTHOR_EMAIL = "myhackband@yandex.ru"
+AUTHOR_EMAIL = "mysmarthub@yandex.ru"
 DESCRIPTION = "A package of modules and CLI utility for destroying, zeroing, and deleting files." \
-              f" {AUTHOR} "
+              " Aleksandr Suvorov | https://github.com/mysmarthub/sfd | " \
+              "https://yoomoney.ru/to/4100115206129186"
 NAME = "mycleaner"
 URL = "https://github.com/mysmarthub/mycleaner"
 LICENSE = 'BSD 3-Clause License'

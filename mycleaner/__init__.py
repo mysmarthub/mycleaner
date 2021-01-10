@@ -8,5 +8,5 @@
 __version__ = '1.3.0'
 __author__ = 'Aleksandr Suvorov'
 __url__ = 'https://githib.com/mysmarthub/mycleaner'
-__donate__ = 'Donate: 4048 4150 0400 5852 | 4276 4417 5763 7686'
+__donate__ = 'https://yoomoney.ru/to/4100115206129186'
 __copyright__ = 'Copyright © 2020-2021 Aleksandr Suvorov'
