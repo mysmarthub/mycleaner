@@ -95,7 +95,7 @@ class SmartCleaner:
         if self.__paths:
             for n, path in enumerate(self.__paths, 1):
                 msg = f'{n} Path[{path}]' \
-                      f'Files[{smart.get_count_files(path)}] ' \
+                      f' Files[{smart.get_count_files(path)}] ' \
                       f'Folders[{smart.get_count_dirs(path)}]'
                 print(msg)
         else:
@@ -105,15 +105,17 @@ class SmartCleaner:
         """Displays all folders and files that are contained in the added paths"""
         if self.__paths:
             for path in self.__paths:
-                click.echo(f'Path[{path}]:')
                 click.echo()
-                click.echo('Folders:')
-                for n, folder in enumerate(smart.get_folders_gen(path), 1):
-                    print(f'{n} Path[{folder}]')
-                click.echo()
-                click.echo('Files:')
-                for n, file in enumerate(smart.get_files_gen(path), 1):
-                    print(f'{n} Path[{file}]')
+                click.echo(f'Path[{path}]')
+                smart.smart_print()
+                if os.path.isdir(path):
+                    click.echo('Folders:')
+                    for n, folder in enumerate(smart.get_folders_gen(path), 1):
+                        print(f'{n} Path[{folder}]')
+                    click.echo()
+                    click.echo('Files:')
+                    for n, file in enumerate(smart.get_files_gen(path), 1):
+                        print(f'{n} Path[{file}]')
         else:
             print('There is no way to display...')
 
@@ -169,6 +171,7 @@ class SmartCleaner:
     def start(self):
         """Working with paths destroying, zeroing, and deleting files"""
         if self.__paths:
+            smart.smart_print()
             click.echo(f'The selected method: {self.method}')
             count_files = 0
             count_dirs = 0
@@ -186,11 +189,12 @@ class SmartCleaner:
             if self.del_dirs:
                 for path in obj_data.get_dirs():
                     print(f'Delete folder: {path}')
-                    if self.method == 'test':
+                    if self.method != 'test':
                         status = smart_cleaner.del_dir(path)
                     else:
                         status = True
                     smart.print_status(status)
+                    count_dirs += 1
                 smart.smart_print()
             print(f'The work has been completed:\n'
                   f'Processed files: [{count_files - len(smart_cleaner.errors)}]\n'
@@ -284,7 +288,7 @@ def cli(paths, yes, num, method, del_dirs):
     work = True
     logo_start()
     my_cleaner = SmartCleaner(paths=set(paths), method=method, num=num, del_dirs=del_dirs)
-    if not paths and not yes:
+    if not yes or not my_cleaner.paths:
         while 1:
             smart.smart_print()
             click.echo(f'Main Menu. {my_cleaner}:')
