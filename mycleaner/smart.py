@@ -5,13 +5,39 @@
 # https://github.com/mysmarthub
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
+"""The smart module is used for working with paths, storing, receiving, adding, deleting."""
 import os
 import shutil
 
 
+def print_status(status):
+    if status:
+        print('[Successfully!]')
+    else:
+        print('[Error!]')
+
+
+def get_count_dirs(path: str) -> int:
+    """
+    Counting the number of folder recursively nested in a directory
+
+    :param path: <str> Path to the directory
+    :return: <int> Counting the number of folders recursively nested in a directory
+    """
+    if os.path.isdir(path):
+        return sum([len(folders) for _, folders, _ in os.walk(path)])
+    else:
+        return 0
+
+
 def smart_print(text='', char='-'):
+    if not char:
+        char = ' '
     columns, _ = shutil.get_terminal_size()
-    print(f'{text}'.center(columns, char))
+    if text:
+        print(f' {text} '.center(columns, char))
+    else:
+        print(f''.center(columns, char))
 
 
 def get_count_files(path: str) -> int:
@@ -29,17 +55,18 @@ def get_count_files(path: str) -> int:
         return 0
 
 
-def get_count_dirs(path: str) -> int:
-    """
-    Counting the number of folder recursively nested in a directory
+def get_files_gen(path):
+    if path and os.path.exists(path):
+        for p, _, files in os.walk(path):
+            for f in files:
+                yield os.path.join(p, f)
 
-    :param path: <str> Path to the directory
-    :return: <int> Counting the number of folders recursively nested in a directory
-    """
-    if os.path.isdir(path):
-        return sum([len(folders) for _, folders, _ in os.walk(path)])
-    else:
-        return 0
+
+def get_folders_gen(path):
+    if path and os.path.exists(path):
+        for p, folders, _ in os.walk(path):
+            for f in folders:
+                yield os.path.join(p, f)
 
 
 class PathObj:
@@ -163,6 +190,10 @@ class DataObj:
     def is_any_data(self) -> bool:
         """Checking for data in repositories"""
         return True if self.__objects else False
+
+    @property
+    def count(self):
+        return len(self.__objects)
 
     def clear_data(self) -> None:
         """Clearing storage"""
