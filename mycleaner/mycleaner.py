@@ -123,12 +123,15 @@ class SmartCleaner:
         """Getting user input to change the way the utility works"""
         while 1:
             method_dict = {n: m for n, m in enumerate(['destroy', 'zeroing', 'delete', 'test'], 1)}
+            print('0. Cancel')
             for n, m in method_dict.items():
                 msg = f'{n}: {m}'
                 if self.method == m:
                     msg += ' [x]'
                 print(msg)
             user_method = click.prompt(f'Select a method', type=int)
+            if not user_method:
+                break
             smart.smart_print()
             if user_method not in method_dict:
                 print('Input Error!')
@@ -212,7 +215,7 @@ class SmartCleaner:
 def logo_start():
     """Output of the welcome logo"""
     smart.smart_print('', '*')
-    smart.smart_print(f'My Cleaner', '=')
+    smart.smart_print(f'My Cleaner v{__version__}', '=')
     smart.smart_print('', '*')
     smart.smart_print('CLI utility for destroying, zeroing, and deleting files', ' ')
 
