@@ -19,7 +19,7 @@ except ImportError:
 
 __version__ = '1.3.1'
 __author__ = 'Aleksandr Suvorov'
-__url__ = 'https://githib.com/mysmarthub/'
+__url__ = 'https://github.com/mysmarthub/'
 __donate__ = 'Donate: https://yoomoney.ru/to/4100115206129186'
 __copyright__ = 'Copyright © 2020-2021 Aleksandr Suvorov'
 
