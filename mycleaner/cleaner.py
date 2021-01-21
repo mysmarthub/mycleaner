@@ -87,7 +87,8 @@ class Cleaner:
                 self.count_del_files += 1
                 return True
         else:
-            self.del_file(file)
+            status = self.del_file(file)
+            return status
 
     def del_file(self, file: str) -> bool:
         """Deletes the file at the specified path using normal deletion
@@ -99,8 +100,11 @@ class Cleaner:
             if os.path.islink(file):
                 os.unlink(file)
             else:
-                self.zero_file(file)
-                os.remove(file)
+                status = self.zero_file(file)
+                if status:
+                    os.remove(file)
+                else:
+                    raise OSError
         except OSError:
             self.errors.append(f'Os error! Do not delete: {file}')
             return False

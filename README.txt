@@ -21,6 +21,52 @@ The interface has been completely changed,
 bugs have been fixed, new features have been added,
 and work has been accelerated.
 
+Windows support:
+----------------
+Download mycleaner and run mycleaner.exe
+
+https://sourceforge.net/projects/mycleaner-package/
+
+or
+
+https://github.com/mysmarthub/mycleaner/releases/tag/v1.3.2
+At the very bottom you will find download links.
+
+Since mycleaner.exe packed with pyinstaller,
+some antivirus software may react to it.
+
+Run mycleaner on Windows:
+
+1. Download and install the latest version of Python
+https://www.python.org/downloads/
+when installing, check the box " Add Python to PATH"
+
+2. Restart the system
+
+3. Start the console (win + r keyboard shortcut)
+
+4. Run the command:
+pip install mycleaner
+
+If the installation is successful and all the steps were performed correctly
+you can run mycleaner in the console with the command:
+mycleaner
+mycleaner []
+
+
+You can also download the archive with the program,
+unpack it to any convenient place, and if you have python installed:
+
+1. Install dependencies with the command:
+2. Find the file in the program folder requirements.txt
+3. pip install -r full path to the file requirements.txt
+Next, you can run the utility from the command line
+by specifying the full path to the mycleaner file.py using the command:
+python mycleaner.py [arguments]
+
+
+
+
 Termux support:
 ---------------
 
@@ -58,6 +104,12 @@ restoring them after deletion.
 
 Be careful! When adding folders, all files from all subfolders
 will be added recursively.
+
+We recommend that you run the program on Linux, mount the disks,
+and work with them, because then you will have access to
+the destroy method with the function of overwriting files.
+When running in Windows, the destroy method will reset the
+files and then delete them without using multiple file overwrites!
 
 Help:
 -----

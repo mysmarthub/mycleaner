@@ -345,6 +345,8 @@ def cli(paths, yes, num, method, del_dirs):
     if work:
         my_cleaner.start()
     logo_finish()
+    if os.name != 'posix':
+        input('Enter for exit...')
 
 
 if __name__ == '__main__':
