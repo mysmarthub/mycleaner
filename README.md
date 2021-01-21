@@ -64,7 +64,7 @@ https://sourceforge.net/projects/mycleaner-package/
 
 or
 
-https://github.com/mysmarthub/mycleaner/releases/tag/v1.3.2
+https://github.com/mysmarthub/mycleaner/releases/
 
 ---
 
