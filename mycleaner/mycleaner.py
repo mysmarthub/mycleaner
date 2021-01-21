@@ -17,11 +17,16 @@ except ImportError:
     import smart
     import cleaner
 
-__version__ = '1.3.1'
-__author__ = 'Aleksandr Suvorov'
-__url__ = 'https://github.com/mysmarthub/'
-__donate__ = 'Donate: https://yoomoney.ru/to/4100115206129186'
-__copyright__ = 'Copyright © 2020-2021 Aleksandr Suvorov'
+VERSION = '1.3.2'
+AUTHOR = 'Aleksandr Suvorov'
+URL = 'https://github.com/mysmarthub/'
+DONATE = 'Donate: https://yoomoney.ru/to/4100115206129186'
+COPYRIGHT = 'Copyright © 2020-2021 Aleksandr Suvorov'
+TITLE = 'Smart Password Manager'
+DESCRIPTION = 'Менеджер и генератор паролей'
+YANDEX = 'https://yoomoney.ru/to/4100115206129186'
+PAYPAL = 'https://paypal.me/myhackband'
+README_URL = 'https://github.com/mysmarthub/mycleaner/blob/master/README.md'
 
 
 class SmartCleaner:
@@ -212,10 +217,14 @@ class SmartCleaner:
             print('There is no way to work...')
 
 
+def open_url(url):
+    click.launch(url)
+
+
 def logo_start():
     """Output of the welcome logo"""
     smart.smart_print('', '*')
-    smart.smart_print(f'My Cleaner v{__version__}', '=')
+    smart.smart_print(f'My Cleaner v{VERSION}', '=')
     smart.smart_print('', '*')
     smart.smart_print('CLI utility for destroying, zeroing, and deleting files', ' ')
 
@@ -225,9 +234,9 @@ def logo_finish():
     click.echo()
     click.echo('Exit...')
     smart.smart_print('', '=')
-    smart.smart_print(f'{__url__}', ' ')
-    smart.smart_print(f'{__donate__}', ' ')
-    smart.smart_print(f'{__copyright__}', ' ')
+    smart.smart_print(f'{URL}', ' ')
+    smart.smart_print(f'{DONATE}', ' ')
+    smart.smart_print(f'{COPYRIGHT}', ' ')
     smart.smart_print('The program is complete', '-')
 
 
@@ -235,7 +244,7 @@ def print_version(ctx, value):
     """Print Version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo(f'My Cleaner {__version__} | {__copyright__}')
+    click.echo(f'My Cleaner {VERSION} | {COPYRIGHT}')
     ctx.exit()
 
 
@@ -285,7 +294,10 @@ def cli(paths, yes, num, method, del_dirs):
     -Use:
     mycleaner /path1 /path2 /pathN/file.file --shred -n 30 -dd -y
 
-    https://github.com/mysmarthub/mycleaner
+    README.md
+    https://github.com/mysmarthub/mycleaner/blob/master/README.md
+
+    https://github.com/mysmarthub/mycleaner/
     mysmarthub@ya.ru
     """
     work = True
@@ -303,6 +315,7 @@ def cli(paths, yes, num, method, del_dirs):
             click.echo(f'4. Information about paths')
             click.echo(f'5. Show files and folders')
             click.echo(f'6. To change the method [{my_cleaner.method}]')
+            click.echo(f'7. Open help url')
             smart.smart_print()
             action = click.prompt('Enter', type=int)
             smart.smart_print()
@@ -322,6 +335,8 @@ def cli(paths, yes, num, method, del_dirs):
                 my_cleaner.show()
             elif action == 6:
                 my_cleaner.update_method()
+            elif action == 7:
+                open_url(README_URL)
             elif action == 0:
                 work = False
                 break

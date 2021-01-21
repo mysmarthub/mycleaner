@@ -2,24 +2,27 @@ My cleaner
 ==========
 A package of modules and CLI utility for destroying,
 zeroing, and deleting files.
-Author and developer: Aleksandr Suvorov
+
+Author and developer:
+---------------------
+Aleksandr Suvorov
 BSD 3-Clause License
 
 Help the project financially:
-=============================
+-----------------------------
 https://yoomoney.ru/to/4100115206129186
 Visa:    4048 4150 0400 5852
 https://paypal.me/myhackband
 
 What's new?
-===========
+-----------
 The program code has been completely redesigned.
 The interface has been completely changed,
 bugs have been fixed, new features have been added,
 and work has been accelerated.
 
 Termux support:
-===============
+---------------
 
 You can easily use the utility with Termux
 on mobile phones and tablets.
@@ -36,7 +39,7 @@ on mobile phones and tablets.
     Read more about how to use the utility.
 
 Description:
-============
+------------
 A package of modules and console utilities for destroying,
 zeroing, and deleting files.
 
@@ -57,7 +60,7 @@ Be careful! When adding folders, all files from all subfolders
 will be added recursively.
 
 Help:
-=====
+-----
 
 Usage: mycleaner.py [OPTIONS] [PATHS]...
 
@@ -100,7 +103,7 @@ Options:
   --help             Show this message and exit.
 
 Use:
-====
+----
 
 Package installation:
 ---------------------
@@ -176,13 +179,13 @@ sudo pip install -r requirements.txt
 sudo python mycleaner/mycleaner.py /path1 /path2 /pathN/file.file --shred -n 30 -dd
 
 Links:
-======
+------
 https://github.com/mysmarthub/mycleaner
 https://pypi.org/project/mycleaner
 https://sourceforge.net/projects/mycleaner-package/files/latest/download
 
 Disclaimer of liability:
-========================
+------------------------
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -192,6 +195,6 @@ Disclaimer of liability:
     SOFTWARE.
 
 Support:
-========
+--------
     Email: mysmarthub@ya.ru
     Copyright © 2020-2021 Aleksandr Suvorov

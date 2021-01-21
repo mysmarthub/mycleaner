@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 # Licensed under the terms of the BSD 3-Clause License
 # (see LICENSE for details)
-# https://github.com/mysmarthub
+# https://github.com/mysmarthub/
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
 """
@@ -144,15 +142,3 @@ class Cleaner:
     def reset_error_list(self):
         """Resetting error list"""
         self.errors.clear()
-
-
-if __name__ == '__main__':
-    try:
-        from sfd import sfd
-    except ModuleNotFoundError:
-        print('Error!!!')
-        print('The sfd (Smart Files Destroyer) package is not installed)!')
-        print('To install, use the command: pip install sfd')
-        print('Or pip install -r requirements.txt')
-    else:
-        sfd.cli()

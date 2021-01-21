@@ -16,8 +16,8 @@ about errors in the course of its work.
 
 mycleaner.py - CLI utility for destroying, zeroing, and deleting files.
 """
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 __author__ = 'Aleksandr Suvorov'
-__url__ = 'https://github.com/mysmarthub/mycleaner'
+__url__ = 'https://github.com/mysmarthub/mycleaner/'
 __donate__ = 'https://yoomoney.ru/to/4100115206129186'
 __copyright__ = 'Copyright © 2020-2021 Aleksandr Suvorov'
