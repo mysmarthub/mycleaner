@@ -12,12 +12,11 @@ from os.path import join, dirname
 PACKAGE = "mycleaner"
 VERSION = __import__(PACKAGE).__version__
 AUTHOR = __import__(PACKAGE).__author__
-AUTHOR_EMAIL = "mysmarthub@yandex.ru"
-DESCRIPTION = "A package of modules and CLI utility for destroying, zeroing, " \
-              "and deleting files. Copyright © 2020-2021 Aleksandr Suvorov"
-NAME = "mycleaner"
-URL = "https://github.com/mysmarthub/mycleaner/"
-LICENSE = 'BSD 3-Clause License'
+AUTHOR_EMAIL = __import__(PACKAGE).__email__
+DESCRIPTION = __import__(PACKAGE).__description__
+NAME = 'mycleaner'
+URL = __import__(PACKAGE).__url__
+LICENSE = __import__(PACKAGE).__license__
 LONG_DESCRIPTION = open(join(dirname(__file__), 'README.md')).read()
 INSTALL_REQUIRES = open(join(dirname(__file__), 'requirements.txt')).read()
 PLATFORM = ['Linux, Windows']
@@ -50,6 +49,7 @@ KEYWORDS = [
     'my cleaner',
     'aleksandr suvorov',
     'smart-py.ru',
+    'mysmarthub',
 ]
 setup(
     name=NAME,

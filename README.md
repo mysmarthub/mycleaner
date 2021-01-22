@@ -62,10 +62,6 @@ Windows support:
 
 https://sourceforge.net/projects/mycleaner-package/
 
-or
-
-https://github.com/mysmarthub/mycleaner/releases/
-
 ---
 
 At the very bottom you will find download links.

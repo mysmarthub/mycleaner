@@ -23,14 +23,9 @@ and work has been accelerated.
 
 Windows support:
 ----------------
-Download mycleaner and run mycleaner.exe
+Download mycleaner and run mycleaner.exe or mycleaner.py
 
 https://sourceforge.net/projects/mycleaner-package/
-
-or
-
-https://github.com/mysmarthub/mycleaner/releases/
-At the very bottom you will find download links.
 
 Since mycleaner.exe packed with pyinstaller,
 some antivirus software may react to it.
@@ -50,8 +45,12 @@ pip install mycleaner
 
 If the installation is successful and all the steps were performed correctly
 you can run mycleaner in the console with the command:
+
 mycleaner
-mycleaner []
+
+For help:
+
+mycleaner --help
 
 
 You can also download the archive with the program,
@@ -63,8 +62,6 @@ unpack it to any convenient place, and if you have python installed:
 Next, you can run the utility from the command line
 by specifying the full path to the mycleaner file.py using the command:
 python mycleaner.py [arguments]
-
-
 
 
 Termux support:

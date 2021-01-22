@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 # Licensed under the terms of the BSD 3-Clause License
 # (see LICENSE for details)
-# https://github.com/mysmarthub
+# https://github.com/mysmarthub/mycleaner/
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
 """CLI utility for destroying, zeroing, and deleting files"""
@@ -17,16 +17,15 @@ except ImportError:
     import smart
     import cleaner
 
-VERSION = '1.3.2'
-AUTHOR = 'Aleksandr Suvorov'
-URL = 'https://github.com/mysmarthub/'
-DONATE = 'Donate: https://yoomoney.ru/to/4100115206129186'
-COPYRIGHT = 'Copyright © 2020-2021 Aleksandr Suvorov'
 TITLE = 'My Cleaner'
+VERSION = '1.3.2'
 DESCRIPTION = 'CLI utility for destroying, zeroing, and deleting files'
+AUTHOR = 'Aleksandr Suvorov'
+README_URL = 'https://github.com/mysmarthub/mycleaner/blob/master/README.md'
+COPYRIGHT = 'Copyright © 2020-2021 Aleksandr Suvorov'
+URL = 'https://github.com/mysmarthub/'
 YANDEX = 'https://yoomoney.ru/to/4100115206129186'
 PAYPAL = 'https://paypal.me/myhackband'
-README_URL = 'https://github.com/mysmarthub/mycleaner/blob/master/README.md'
 
 
 class SmartCleaner:
@@ -224,9 +223,9 @@ def open_url(url):
 def logo_start():
     """Output of the welcome logo"""
     smart.smart_print('', '*')
-    smart.smart_print(f'My Cleaner v{VERSION}', '=')
+    smart.smart_print(f'{TITLE} v{VERSION}', '=')
     smart.smart_print('', '*')
-    smart.smart_print('CLI utility for destroying, zeroing, and deleting files', ' ')
+    smart.smart_print(f'{DESCRIPTION}', ' ')
 
 
 def logo_finish():
@@ -235,7 +234,7 @@ def logo_finish():
     click.echo('Exit...')
     smart.smart_print('', '=')
     smart.smart_print(f'{URL}', ' ')
-    smart.smart_print(f'{DONATE}', ' ')
+    smart.smart_print(f'{YANDEX}', ' ')
     smart.smart_print(f'{COPYRIGHT}', ' ')
     smart.smart_print('The program is complete', '-')
 
@@ -244,7 +243,7 @@ def print_version(ctx, value):
     """Print Version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo(f'My Cleaner {VERSION} | {COPYRIGHT}')
+    click.echo(f'{TITLE} {VERSION} | {COPYRIGHT}')
     ctx.exit()
 
 
