@@ -14,7 +14,7 @@ Also for deleting folders.
 It has counters and collects and stores information
 about errors in the course of its work.
 """
-__version__ = '1.3.2'
+__version__ = '1.3.3'
 __author__ = 'Aleksandr Suvorov'
 __url__ = 'https://github.com/mysmarthub/mycleaner/'
 __email__ = 'mysmarthub@ya.ru'

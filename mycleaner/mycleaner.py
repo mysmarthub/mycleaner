@@ -18,7 +18,7 @@ except ImportError:
     import cleaner
 
 TITLE = 'My Cleaner'
-VERSION = '1.3.2'
+VERSION = '1.3.3'
 DESCRIPTION = 'CLI utility for destroying, zeroing, and deleting files'
 AUTHOR = 'Aleksandr Suvorov'
 README_URL = 'https://github.com/mysmarthub/mycleaner/blob/master/README.md'
@@ -30,6 +30,7 @@ PAYPAL = 'https://paypal.me/myhackband'
 
 class SmartCleaner:
     """Managing the operation of the utility"""
+
     def __init__(self, paths: set, method: str = 'destroy', num=30, del_dirs=False):
         """
         When creating an object, it takes as parameters:
@@ -206,9 +207,9 @@ class SmartCleaner:
                     count_dirs += 1
                 smart.smart_print()
             click.echo(f'The work has been completed:\n'
-                  f'Processed files: [{count_files - len(smart_cleaner.errors)}]\n'
-                  f'Deleted folders: [{count_dirs}]\n'
-                  f'Errors: [{len(smart_cleaner.errors)}]')
+                       f'Processed files: [{count_files - len(smart_cleaner.errors)}]\n'
+                       f'Deleted folders: [{count_dirs}]\n'
+                       f'Errors: [{len(smart_cleaner.errors)}]')
             if smart_cleaner.errors:
                 smart.smart_print(f' Errors: [{len(smart_cleaner.errors)}]')
                 for err in smart_cleaner.errors:
@@ -233,9 +234,10 @@ def logo_finish():
     """Output of the completion logo"""
     click.echo()
     click.echo('Exit...')
-    smart.smart_print(f'{URL}', '-')
-    smart.smart_print(f'{YANDEX}', '-')
-    smart.smart_print(f'{COPYRIGHT}', '=')
+    smart.smart_print('', '-')
+    smart.smart_print(f'{URL}', ' ')
+    smart.smart_print(f'{YANDEX}', ' ')
+    smart.smart_print(f'{COPYRIGHT}', ' ')
     smart.smart_print('The program is complete', '*')
 
 
@@ -342,7 +344,7 @@ def cli(paths, yes, num, method, del_dirs):
                 break
             else:
                 click.echo('Invalid input!')
-            if action not in (2, ):
+            if action not in (2,):
                 input('Enter for continue...')
     if work:
         my_cleaner.start()
