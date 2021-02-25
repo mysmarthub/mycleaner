@@ -2,7 +2,8 @@ My cleaner
 ===
 ---
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/mysmarthub/mycleaner)](https://github.com/mysmarthub/mycleaner/)
-
+[![Python](https://img.shields.io/static/v1?label=Python&message=3.6/3.7/3.8/3.9&color=yellow)](https://python.org)
+[![GitHub](https://img.shields.io/github/license/mysmarthub/mycleaner?style=flat-square)](https://github.com/mysmarthub/mycleaner/)
 ---
 >A package of modules and CLI utility for destroying, zeroing, and deleting files.
 > 
@@ -14,10 +15,11 @@ My cleaner
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/mycleaner?label=pypi%20downloads)](https://pypi.org/project/mycleaner/)
 [![PyPI](https://img.shields.io/pypi/v/mycleaner)](https://pypi.org/project/mycleaner/)
 [![PyPI - Format](https://img.shields.io/pypi/format/mycleaner)](https://pypi.org/project/mycleaner/)
-[![GitHub repo size](https://img.shields.io/github/repo-size/mysmarthub/mycleaner)](https://github.com/mysmarthub/mycleaner/)
-[![GitHub all releases](https://img.shields.io/github/downloads/mysmarthub/mycleaner/total?label=github%20downloads)](https://github.com/mysmarthub/mycleaner/)
-[![GitHub](https://img.shields.io/github/license/mysmarthub/mycleaner?style=flat-square)](https://github.com/mysmarthub/mycleaner/)
-[![GitHub Repo stars](https://img.shields.io/github/stars/mysmarthub/mycleaner?style=social)](https://github.com/mysmarthub/mycleaner)
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/mysmarthub/mycleaner?style=social)](https://github.com/mysmarthub/mycleaner/)
+[![GitHub forks](https://img.shields.io/github/forks/mysmarthub/mycleaner?style=social)](https://github.com/mysmarthub/mycleaner/)
+[![GitHub watchers](https://img.shields.io/github/watchers/mysmarthub/mycleaner?style=social)](https://github.com/mysmarthub/mycleaner/)
+
 [![Donate](https://img.shields.io/static/v1?label=donate&message=paypal&color=green)](https://paypal.me/myhackband)
 [![Donate](https://img.shields.io/static/v1?label=donate&message=yandex&color=yellow)](https://yoomoney.ru/to/4100115206129186)
 
@@ -285,20 +287,34 @@ https://pypi.org/project/mycleaner
 
 https://sourceforge.net/projects/mycleaner-package/files/latest/download
 
----
+------------------------
 Disclaimer of liability:
----
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+------------------------
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
----
+-------------
+Requirements:
+-------------
+
+[Click](https://github.com/pallets/click) by [license](https://github.com/pallets/click/blob/master/LICENSE.rst)
+
+Python 3+ : https://python.org
+
+--------
 Support:
----
+--------
     Email: mysmarthub@ya.ru
+    Copyright © 2020 Aleksandr Suvorov
+    
+    -----------------------------------------------------------------------------
+    Licensed under the terms of the BSD 3-Clause License
+    (see LICENSE for details)
+    https://github.com/mysmarthub
     Copyright © 2020-2021 Aleksandr Suvorov
-
+    -----------------------------------------------------------------------------
