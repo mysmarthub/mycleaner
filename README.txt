@@ -16,10 +16,7 @@ https://paypal.me/myhackband
 
 What's new?
 -----------
-The program code has been completely redesigned.
-The interface has been completely changed,
-bugs have been fixed, new features have been added,
-and work has been accelerated.
+A new interface!
 
 Windows support:
 ----------------

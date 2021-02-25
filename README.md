@@ -44,15 +44,7 @@ Help the project financially:
 
 What's new?
 ---
-1. The program code has been completely redesigned. 
-
-2. The interface has been completely changed, 
-
-3. Bugs have been fixed 
-   
-4. New features have been added
-
-5. Work has been accelerated
+> A new interface!
 
 ---
 

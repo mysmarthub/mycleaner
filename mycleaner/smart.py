@@ -1,12 +1,11 @@
 # -----------------------------------------------------------------------------
 # Licensed under the terms of the BSD 3-Clause License
-# (see LICENSE for details)
+# (see LICENSE.txt for details)
 # https://github.com/mysmarthub/
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
 """The smart module is used for working with paths, storing, receiving, adding, deleting."""
 import os
-import shutil
 
 
 def print_status(status):
@@ -27,16 +26,6 @@ def get_count_dirs(path: str) -> int:
         return sum([len(folders) for _, folders, _ in os.walk(path)])
     else:
         return 0
-
-
-def smart_print(text='', char='-'):
-    if not char:
-        char = ' '
-    columns, _ = shutil.get_terminal_size()
-    if text:
-        print(f' {text} '.center(columns, char))
-    else:
-        print(f''.center(columns, char))
 
 
 def get_count_files(path: str) -> int:
