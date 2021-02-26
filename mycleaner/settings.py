@@ -17,6 +17,7 @@ VERSION = '1.4.0'
 AUTHOR = 'Aleksandr Suvorov'
 EMAIL = 'mysmarthub@ya.ru'
 
+
 URL = 'https://github.com/mysmarthub/mycleaner/'
 README_URL = 'https://github.com/mysmarthub/mycleaner/blob/master/README.md'
 
