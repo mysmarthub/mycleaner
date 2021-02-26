@@ -51,9 +51,11 @@ class SmartCleaner:
         When creating an object, it takes as parameters:
 
         :param paths: <set> a variety of paths to files and folders
-        :param method: <str> method to work with - currently available [destroy, zeroing, delete, test]
+        :param method: <str> method to work with -
+            currently available [destroy, zeroing, delete, test]
         :param method: <int> number of overwrites of a file before deleting it
-        :param method: <bool> Delete folders True - empty folders will be deleted - False - will not be deleted
+        :param method: <bool> Delete folders True - empty folders will
+            be deleted - False - will not be deleted
         """
         self.__paths = paths
         self.method = method
@@ -250,7 +252,7 @@ def logo_start():
     """Output of the welcome logo"""
     smart_print('', '*')
     smart_print(f'{settings.TITLE} v{settings.VERSION}', '=')
-    smart_print(f'{settings.DESCRIPTION}', ' ')
+    smart_print(f'{settings.CLI_DESCRIPTION}', ' ')
 
 
 def logo_finish():
@@ -302,11 +304,8 @@ def cli(paths, yes, num, method, del_dirs):
     PATHS - these are the paths to files and folders with files separated by a space,
     if there are spaces in the path name, escape them, or put them in quotation marks.
 
-    - Console utility for destruction,
-    zeroing, and deleting files.
-
-    - The utility allows you to destruct files,
-    reset them to zero and delete them,
+    - The utility allows you to destroy files
+    wash and remove,
     for complete or partial difficulty in
     restoring them after deletion.
 
@@ -327,7 +326,7 @@ def cli(paths, yes, num, method, del_dirs):
     my_cleaner = SmartCleaner(paths=set(paths), method=method, num=num, del_dirs=del_dirs)
     if not yes or not my_cleaner.paths:
         while 1:
-            smart_print('Paths')
+            smart_print('Added paths')
             click.echo(f'{my_cleaner}:')
             smart_print('Main Menu')
             click.echo(f's: Start')

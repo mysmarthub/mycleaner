@@ -10,8 +10,9 @@ PACKAGE = "mycleaner"
 NAME = "mycleaner"
 
 TITLE = 'My Cleaner'
-DESCRIPTION = 'A package of modules and CLI utility for destroying, zeroing, and deleting files'
-VERSION = '1.3.4'
+CLI_DESCRIPTION = 'CLI utility for destroying, zeroing, and deleting files'
+DESCRIPTION = 'A package of modules and CLI utility for destroying, zeroing, and deleting files.'
+VERSION = '1.3.5'
 
 AUTHOR = 'Aleksandr Suvorov'
 EMAIL = 'mysmarthub@ya.ru'
