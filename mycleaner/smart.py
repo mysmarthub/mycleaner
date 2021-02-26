@@ -68,7 +68,7 @@ class PathObj:
         :param path: <str> Path to the directory
         :return: <generator> paths to files recursively nested in a directory
         """
-        return (os.path.join(p, file) for p, _, files in os.walk(path) for file in files)
+        return (os.path.join(p, file) for p, _, files in os.walk(path, ) for file in files)
 
     @staticmethod
     def dirs_path_gen(path: str):

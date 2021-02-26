@@ -66,7 +66,7 @@ class SmartCleaner:
     def prompt_path(self):
         """Getting path input from the user and adding them"""
         while 1:
-            user_path = click.prompt('Enter the path')
+            user_path = click.prompt('Enter the path', type=click.Path(exists=True))
             smart_print()
             if self.add_path(user_path):
                 click.echo('Path added successfully!')
@@ -257,8 +257,6 @@ def logo_start():
 
 def logo_finish():
     """Output of the completion logo"""
-    click.echo()
-    click.echo('Exit...')
     smart_print(f'{settings.URL}', '-')
     smart_print(f'{settings.YANDEX}', '=')
     smart_print(f'{settings.COPYRIGHT}', '*')

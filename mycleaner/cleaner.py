@@ -28,13 +28,14 @@ class Cleaner:
 
     for further destruction, zeroing, deleting files. Delete a folder.
     """
-    def __init__(self, shreds=30):
+    def __init__(self, shreds=30, ):
         """Accepts an optional parameter when creating an object shred:
 
         the number of passes to overwrite the file. By default, 30 passes.
         """
         self.errors = []
         self.shreds = shreds
+        self.count = 0
         self.count_zero_files = 0
         self.count_del_files = 0
         self.count_del_dirs = 0
@@ -70,21 +71,24 @@ class Cleaner:
             return False
         else:
             self.count_zero_files += 1
+            self.count += 1
             return True
 
-    def shred_file(self, file: str) -> bool:
+    def shred_file(self, file: str, verbose=True) -> bool:
         """Overwrites and deletes the file at the specified path
+        :param verbose: <bool> Show complete progress
         :param file: <str> Path to the file
         :return: <bool> The logical status of the operation of destruction the file
         """
         rep_path = self.replace_path(file)
         if os.name == 'posix':
-            status = os.system(f'shred -zvuf -n {self.shreds} {rep_path}')
+            status = os.system(f'shred {"-zvuf" if verbose else "-zuf"} -n {self.shreds} {rep_path}')
             if status:
                 self.errors.append(f'Do not shred, os error: {file}')
                 return False
             else:
                 self.count_del_files += 1
+                self.count += 1
                 return True
         else:
             status = self.del_file(file)
@@ -113,6 +117,7 @@ class Cleaner:
             return False
         else:
             self.count_del_files += 1
+            self.count += 1
             return True
 
     def del_dir(self, path: str) -> bool:
@@ -142,6 +147,7 @@ class Cleaner:
         self.count_zero_files = 0
         self.count_del_files = 0
         self.count_del_dirs = 0
+        self.count = 0
 
     def reset_error_list(self):
         """Resetting error list"""
