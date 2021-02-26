@@ -4,7 +4,7 @@
 # https://github.com/mysmarthub/mycleaner/
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
-"""A package of modules and CLI utility for destroying, zeroing, and deleting files
+"""A package of modules and CLI utility for shredding, erasing, and deleting files
 
 The smart module is used for working with paths, storing, receiving, adding, deleting.
 

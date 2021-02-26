@@ -5,9 +5,9 @@
 # Copyright © 2020-2021 Aleksandr Suvorov
 # -----------------------------------------------------------------------------
 """
-Module for destruction, zeroing, and deleting files.
+Module for destruction, erasing, and deleting files.
 
-Used to create applications for destruction, zeroing, and deleting files.
+Used to create applications for destruction, erasing, and deleting files.
 Delete a folder. After being reset or destroyed, file recovery is impossible or
 extremely difficult.
 To destroy it, use the utility shred.
@@ -26,7 +26,7 @@ class Cleaner:
     """
     Creates an object for working with file and folder paths
 
-    for further destruction, zeroing, deleting files. Delete a folder.
+    for further destruction, erasing, deleting files. Delete a folder.
     """
     def __init__(self, shreds=30, ):
         """Accepts an optional parameter when creating an object shred:
@@ -61,13 +61,13 @@ class Cleaner:
         Resets the file
 
         :param file: <str> Path to the file
-        :return: <bool> The logical status of the operation of zeroing the file
+        :return: <bool> The logical status of the operation of erasing the file
         """
         try:
             with open(file, 'wb') as f:
                 f.write(bytes(0))
         except OSError:
-            self.errors.append(f'Zeroing error: {file}')
+            self.errors.append(f'erasing error: {file}')
             return False
         else:
             self.count_zero_files += 1
