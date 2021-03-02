@@ -43,10 +43,10 @@ Help the project financially:
 >https://paypal.me/myhackband
 
 ---
-Warninig!
+Warning!
 ---
-
-> You can see information about earlier versions on the release page:
+> You can see information about earlier versions on the release page: 
+> 
 > https://github.com/mysmarthub/mycleaner/releases.
 
 ---
