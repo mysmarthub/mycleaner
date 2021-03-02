@@ -89,13 +89,6 @@ def print_version(ctx, value):
     ctx.exit()
 
 
-def print_status(status):
-    if status:
-        click.echo('Successfully!')
-    else:
-        click.echo('Error!')
-
-
 def work(method='shred', num=30, paths=None, yes=False, del_dirs=False):
     if paths is None:
         paths = set()
@@ -125,18 +118,17 @@ def work(method='shred', num=30, paths=None, yes=False, del_dirs=False):
                 if not action:
                     click.echo('Skipped...')
                     continue
-                else:
-                    click.echo('Processing...')
+            click.echo('Processing...')
             if method == 'shred':
                 status = my_cleaner.shred_file(path, verbose=False)
             elif method == 'erase':
                 status = my_cleaner.zero_file(path)
             else:
                 status = my_cleaner.del_file(path)
-            print_status(status)
+            smart.print_status(status)
             count += 1
         smart_print()
-        if not yes and not del_dirs:
+        if not yes and not del_dirs and method != 'erase':
             action = get_action('Delete folders')
             if action:
                 del_dirs = True
@@ -152,7 +144,7 @@ def work(method='shred', num=30, paths=None, yes=False, del_dirs=False):
                     else:
                         click.echo('Processing...')
                 status = my_cleaner.del_dir(src)
-                print_status(status)
+                smart.print_status(status)
     smart_print('Work completed!')
     click.echo(f'Errors:[{len(my_cleaner.errors)}], '
                f'{method}:[{my_cleaner.count}], '

@@ -22,7 +22,68 @@ import os
 import shlex
 
 
-class Cleaner:
+class Shredder:
+    def shred(self, file, rew=30, verbose=False):
+        file = shlex.quote(file)
+        command = f'shred {"-zvuf" if verbose else "-zuf"} -n {abs(rew)} {file}'
+        status = os.system(command)
+        if not status:
+            return True
+        return False
+
+
+class Eraser:
+    def erase(self, file):
+        try:
+            with open(file, 'wb') as f:
+                f.write(bytes(0))
+        except OSError:
+            return False
+        return True
+
+
+class FileDeleter:
+    def file_delete(self, file):
+        try:
+            os.remove(file)
+        except (OSError, FileExistsError, FileNotFoundError):
+            return False
+        return True
+
+
+class FolderDeleter:
+    def folder_delete(self, folder):
+        try:
+            os.rmdir(folder)
+        except (OSError, FileExistsError, FileNotFoundError):
+            return False
+        return True
+
+
+class LinkDeleter:
+    def link_delete(self, link):
+        try:
+            os.unlink(link)
+        except (OSError, FileExistsError, FileNotFoundError):
+            return False
+        return True
+
+
+class Remover(FileDeleter, FolderDeleter, LinkDeleter):
+    def delete(self, path):
+        try:
+            if os.path.isfile(path):
+                os.remove(path)
+            elif os.path.isdir(path):
+                os.rmdir(path)
+            else:
+                os.unlink(path)
+        except (OSError, FileExistsError, FileNotFoundError):
+            return False
+        return True
+
+
+class Cleaner(Shredder, Eraser, Remover):
     """
     Creates an object for working with file and folder paths
 
@@ -63,16 +124,13 @@ class Cleaner:
         :param file: <str> Path to the file
         :return: <bool> The logical status of the operation of erasing the file
         """
-        try:
-            with open(file, 'wb') as f:
-                f.write(bytes(0))
-        except OSError:
-            self.errors.append(f'erasing error: {file}')
-            return False
-        else:
+        status = self.erase(file)
+        if status:
             self.count_zero_files += 1
             self.count += 1
-            return True
+        else:
+            self.errors.append(f'erasing error: {file}')
+        return status
 
     def shred_file(self, file: str, verbose=True) -> bool:
         """Overwrites and deletes the file at the specified path
@@ -80,19 +138,16 @@ class Cleaner:
         :param file: <str> Path to the file
         :return: <bool> The logical status of the operation of destruction the file
         """
-        rep_path = self.replace_path(file)
         if os.name == 'posix':
-            status = os.system(f'shred {"-zvuf" if verbose else "-zuf"} -n {self.shreds} {rep_path}')
+            status = self.shred(file=file, rew=self.shreds, verbose=verbose)
             if status:
-                self.errors.append(f'Do not shred, os error: {file}')
-                return False
-            else:
                 self.count_del_files += 1
                 self.count += 1
-                return True
+            else:
+                self.errors.append(f'Do not shred, os error: {file}')
         else:
             status = self.del_file(file)
-            return status
+        return status
 
     def del_file(self, file: str) -> bool:
         """Deletes the file at the specified path using normal deletion
@@ -100,20 +155,9 @@ class Cleaner:
         :param file: <str> Path to the file
         :return: <bool> The logical status of the operation of deletes the file
         """
-        try:
-            if os.path.islink(file):
-                os.unlink(file)
-            else:
-                status = self.zero_file(file)
-                if status:
-                    os.remove(file)
-                else:
-                    raise OSError
-        except OSError:
+        status = self.delete(file)
+        if not status:
             self.errors.append(f'Os error! Do not delete: {file}')
-            return False
-        if self.check_exist(file):
-            self.errors.append(f'Do not delete: {file}')
             return False
         else:
             self.count_del_files += 1
@@ -126,21 +170,13 @@ class Cleaner:
         :param path: <str> Path to the directory
         :return: The logical status of the operation of deletes the folder
         """
-        try:
-            if os.path.islink(path):
-                os.unlink(path)
-            else:
-                os.rmdir(path)
-        except OSError:
+        status = self.delete(path)
+        if not status:
             self.errors.append(f'Os error! Do not delete: {path}')
             return False
         else:
-            if self.check_exist(path):
-                self.errors.append(f'Do not delete: {path}')
-                return False
-            else:
-                self.count_del_dirs += 1
-                return True
+            self.count_del_dirs += 1
+            return True
 
     def reset_count(self) -> None:
         """Resetting counters"""

@@ -16,7 +16,7 @@ https://paypal.me/myhackband
 
 What's new?
 -----------
-A new interface!
+Bugs fixed, new classes added.
 
 
 Termux support:

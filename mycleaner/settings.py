@@ -12,7 +12,7 @@ NAME = "mycleaner"
 TITLE = 'My Cleaner'
 CLI_DESCRIPTION = 'CLI utility for shredding, erasing, and deleting files'
 DESCRIPTION = 'A package of modules, and CLI utility for shredding, erasing, and deleting files.'
-VERSION = '1.4.0'
+VERSION = '1.4.1'
 
 AUTHOR = 'Aleksandr Suvorov'
 EMAIL = 'mysmarthub@ya.ru'
