@@ -128,7 +128,7 @@ def work(method='shred', num=30, paths=None, yes=False, del_dirs=False):
             smart.print_status(status)
             count += 1
         smart_print()
-        if not yes and not del_dirs and method != 'erase':
+        if not yes and not del_dirs and method != 'erase' and obj.num_of_dirs:
             action = get_action('Delete folders')
             if action:
                 del_dirs = True
@@ -147,7 +147,7 @@ def work(method='shred', num=30, paths=None, yes=False, del_dirs=False):
                 smart.print_status(status)
     smart_print('Work completed!')
     click.echo(f'Errors:[{len(my_cleaner.errors)}], '
-               f'{method}:[{my_cleaner.count}], '
+               f'{method}:[{my_cleaner.count_del_files + my_cleaner.count_zero_files}], '
                f'Del folders:[{my_cleaner.count_del_dirs}]')
     my_cleaner.reset_count()
     my_cleaner.reset_error_list()

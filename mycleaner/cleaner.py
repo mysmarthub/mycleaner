@@ -33,39 +33,56 @@ class Shredder:
 
 
 class Eraser:
+    def __init__(self):
+        self.count_zero_files = 0
+
     def erase(self, file):
         try:
             with open(file, 'wb') as f:
                 f.write(bytes(0))
         except OSError:
             return False
+        self.count_zero_files += 1
         return True
 
 
 class FileDeleter:
+    def __init__(self):
+        self.count_del_files = 0
+
     def file_delete(self, file):
         try:
             os.remove(file)
         except (OSError, FileExistsError, FileNotFoundError):
             return False
+        self.count_del_files += 1
         return True
 
 
 class FolderDeleter:
+    def __init__(self):
+        self.count_del_dirs = 0
+
     def folder_delete(self, folder):
         try:
             os.rmdir(folder)
         except (OSError, FileExistsError, FileNotFoundError):
             return False
+        self.count_del_dirs += 1
         return True
 
 
 class LinkDeleter:
+    def __init__(self):
+        self.count_delete_link = 0
+
     def link_delete(self, link):
         try:
             os.unlink(link)
         except (OSError, FileExistsError, FileNotFoundError):
             return False
+
+        self.count_delete_link += 0
         return True
 
 
@@ -83,23 +100,24 @@ class Remover(FileDeleter, FolderDeleter, LinkDeleter):
         return True
 
 
-class Cleaner(Shredder, Eraser, Remover):
+class Cleaner(Shredder, Eraser, FileDeleter, LinkDeleter, FolderDeleter):
     """
     Creates an object for working with file and folder paths
 
     for further destruction, erasing, deleting files. Delete a folder.
     """
-    def __init__(self, shreds=30, ):
+    def __init__(self, shreds=30):
         """Accepts an optional parameter when creating an object shred:
 
         the number of passes to overwrite the file. By default, 30 passes.
         """
+        Shredder.__init__(self)
+        Eraser.__init__(self)
+        FileDeleter.__init__(self)
+        LinkDeleter.__init__(self)
+        FolderDeleter.__init__(self)
         self.errors = []
         self.shreds = shreds
-        self.count = 0
-        self.count_zero_files = 0
-        self.count_del_files = 0
-        self.count_del_dirs = 0
 
     @staticmethod
     def replace_path(path: str) -> str:
@@ -125,10 +143,7 @@ class Cleaner(Shredder, Eraser, Remover):
         :return: <bool> The logical status of the operation of erasing the file
         """
         status = self.erase(file)
-        if status:
-            self.count_zero_files += 1
-            self.count += 1
-        else:
+        if not status:
             self.errors.append(f'erasing error: {file}')
         return status
 
@@ -140,10 +155,7 @@ class Cleaner(Shredder, Eraser, Remover):
         """
         if os.name == 'posix':
             status = self.shred(file=file, rew=self.shreds, verbose=verbose)
-            if status:
-                self.count_del_files += 1
-                self.count += 1
-            else:
+            if not status:
                 self.errors.append(f'Do not shred, os error: {file}')
         else:
             status = self.del_file(file)
@@ -155,14 +167,16 @@ class Cleaner(Shredder, Eraser, Remover):
         :param file: <str> Path to the file
         :return: <bool> The logical status of the operation of deletes the file
         """
-        status = self.delete(file)
+        if os.path.isfile(file):
+            status = self.file_delete(file)
+        elif os.path.islink(file):
+            status = self.link_delete(file)
+        else:
+            status = False
         if not status:
             self.errors.append(f'Os error! Do not delete: {file}')
             return False
-        else:
-            self.count_del_files += 1
-            self.count += 1
-            return True
+        return True
 
     def del_dir(self, path: str) -> bool:
         """Deletes an empty folder at the specified path
@@ -170,20 +184,17 @@ class Cleaner(Shredder, Eraser, Remover):
         :param path: <str> Path to the directory
         :return: The logical status of the operation of deletes the folder
         """
-        status = self.delete(path)
+        status = self.folder_delete(path)
         if not status:
             self.errors.append(f'Os error! Do not delete: {path}')
             return False
-        else:
-            self.count_del_dirs += 1
-            return True
+        return True
 
     def reset_count(self) -> None:
         """Resetting counters"""
         self.count_zero_files = 0
         self.count_del_files = 0
         self.count_del_dirs = 0
-        self.count = 0
 
     def reset_error_list(self):
         """Resetting error list"""
